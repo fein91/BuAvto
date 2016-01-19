@@ -75,6 +75,25 @@
         <jsonup.version>1.7.1</jsonup.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>central1</id>
+            <url>https://repo1.maven.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central1</id>
+            <url>https://repo1.maven.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+
 
     <build>
         <plugins>

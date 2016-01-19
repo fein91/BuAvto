@@ -7,40 +7,8 @@
 
        <context:property-placeholder location="classpath:/db.properties" />
 
-
        <bean id="urlBuildersFactory" class="com.buavto.builders.url.UrlBuildersFactory">
               <lookup-method name="createAvtoRiaBuilder" bean="avtoRiaBuilder"/>
        </bean>
 
-       <!--<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">-->
-              <!--<property name="driverClassName" value="${spring.datasource.driverClassName}"/>-->
-              <!--<property name="url" value="${spring.datasource.url}" />-->
-              <!--<property name="username" value="${spring.datasource.username}" />-->
-              <!--<property name="password" value="${spring.datasource.password}"/>-->
-       <!--</bean>-->
-
-       <!--<bean id="hibernate4AnnotatedSessionFactory"-->
-             <!--class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">-->
-              <!--<property name="dataSource" ref="dataSource" />-->
-              <!--<property name="annotatedClasses">-->
-                     <!--<list>-->
-                            <!--<value>com.smartnews.model.Client</value>-->
-                            <!--<value>com.smartnews.model.Folder</value>-->
-                            <!--<value>com.smartnews.model.Article</value>-->
-                            <!--<value>com.smartnews.model.Tag</value>-->
-                     <!--</list>-->
-              <!--</property>-->
-              <!--<property name="hibernateProperties">-->
-                     <!--<props>-->
-                            <!--<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</prop>-->
-                            <!--<prop key="hibernate.show_sql">true</prop>-->
-                     <!--</props>-->
-              <!--</property>-->
-       <!--</bean>-->
-
-       <!--<bean id="transactionManager"-->
-             <!--class="org.springframework.orm.hibernate4.HibernateTransactionManager">-->
-              <!--<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />-->
-              <!--<property name="dataSource" ref="dataSource"/>-->
-       <!--</bean>-->
 </beans>

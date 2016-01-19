@@ -32,7 +32,7 @@ public class AvtoRiaParseTest {
         Document dom = parser.parseDom(readFile(PATH));
         List<Article> articleList = parser.parseArticles(dom, articlesParsingStrategy);
 
-        Assert.assertNotNull(articleList);
+        Assert.assertEquals(10, articleList.size());
     }
 
     private String readFile(String path) throws IOException {

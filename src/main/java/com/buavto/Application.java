@@ -36,7 +36,7 @@ public class Application {
         ArticlesDao articlesDao = (ArticlesDao) ctx.getBean("articlesDao");
 
         AvtoRiaBuilder avtoRiaBuilder = (AvtoRiaBuilder) urlBuildersFactory.create(1);
-        URL url = avtoRiaBuilder
+        String url = avtoRiaBuilder
                 .year_from(2014)
                 .currency(1)
                 .priceFrom(10000)

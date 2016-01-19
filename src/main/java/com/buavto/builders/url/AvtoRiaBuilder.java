@@ -93,7 +93,7 @@ public class AvtoRiaBuilder implements UrlBuilder {
                         "&page=1";
 
     @Override
-    public URL build() {
+    public String build() {
         StringBuilder strBuilder = new StringBuilder(URL_PREFIX);
         strBuilder.append("?category_id=").append(category.getId())
                 .append("&marka_id=").append(marka_id)
@@ -112,15 +112,9 @@ public class AvtoRiaBuilder implements UrlBuilder {
                 .append("&countpage=").append(countpage)
                 .append("&page=").append(page);
 
-        URL url = null;
-        try {
-            url = new URL(strBuilder.toString());
-        } catch (MalformedURLException e) {
-            LOGGER.error("Unreachable url was build: " + strBuilder.toString());
-        }
-
-        LOGGER.info("[auto.ria.com] url was build: " + strBuilder.toString());
-        return url;
+        String urlString = strBuilder.toString();
+        LOGGER.info("[auto.ria.com] url was build: " + urlString);
+        return urlString;
     }
 
     private enum AvtoRiaCategory {
