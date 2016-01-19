@@ -36,9 +36,9 @@ public class AvtoRiaUrlBuilderTest {
                 "&countpage=0" +
                 "&page=0";
 
-        URL url1 = builder.year_from(2014).build();
+        String url1 = builder.year_from(2014).build();
 
-        Assert.assertEquals(expectedUrl1, url1.toString());
+        Assert.assertEquals(expectedUrl1, url1);
 
         builder = (AvtoRiaBuilder) urlBuildersFactory.create(1);
 
@@ -56,8 +56,8 @@ public class AvtoRiaUrlBuilderTest {
                 "&countpage=0" +
                 "&page=0";
 
-        URL url2 = builder.currency(1).build();
+        String url2 = builder.currency(1).build();
 
-        Assert.assertEquals(expectedUrl2, url2.toString());
+        Assert.assertEquals(expectedUrl2, url2);
     }
 }

@@ -43,7 +43,7 @@ public class Application {
                 .build();
 
         try {
-            List<Article> articles = parser.parseArticles(url.toString(), parsingStrategy);
+            List<Article> articles = parser.parseArticles(url, parsingStrategy);
             LOGGER.info("articles parsed: " + articles);
             articlesDao.save(articles);
         } catch (IOException e) {

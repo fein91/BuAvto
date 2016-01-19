@@ -31,7 +31,8 @@ public class AvtoRiaArticlesParserStrategy implements ArticlesParsingStrategy {
 
     @Override
     public List<Article> parseDom(Document doc) {
-        List<Element> articlesDiv = doc.select("div.ticket-item");
+        Element body = doc.body();
+        List<Element> articlesDiv = body.select("div.ticket-item");
         List<Article> result = new ArrayList<>();
 
         for (Element articleDiv : articlesDiv) {
@@ -51,7 +52,7 @@ public class AvtoRiaArticlesParserStrategy implements ArticlesParsingStrategy {
                 model = parseModel(brand, hrefTitle);
             }
 
-            String detailsUrl = href.attr("href");
+            String detailsUrl = href.attr("abs:href");
             Element img = href.getElementsByTag("img").first();
             String photoUrl = img.attr("src");
 
