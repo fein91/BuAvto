@@ -9,7 +9,7 @@ import java.util.Date;
 @Table(name = Article.TABLE_NAME)
 public class Article {
 
-    public static final String TABLE_NAME = "article";
+    public static final String TABLE_NAME = "articles";
     private static final String SEQUENCE_GENERATOR = "articles_seq_gen";
     private static final String SEQUENCE_NAME = "articles_seq";
     private static final String BRAND_FK = "brand_fk";

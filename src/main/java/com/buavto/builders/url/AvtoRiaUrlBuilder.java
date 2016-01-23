@@ -5,25 +5,20 @@ import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
 @Component
 @Scope("prototype")
-public class AvtoRiaBuilder implements UrlBuilder {
-
-    private final static Logger LOGGER = LogManager.getLogger(AvtoRiaBuilder.class.getName());
-
+public class AvtoRiaUrlBuilder extends AbstractUrlBuilder {
     private final static String URL_PREFIX = "https://auto.ria.com/search/";
 
-    public AvtoRiaBuilder() {
+    public AvtoRiaUrlBuilder() {
         this.category = AvtoRiaCategory.CARS;
         this.marka_id = 0;
         this.model_id = 0;
         this.state = 0;
+        this.currency = 1;
     }
 
-    public AvtoRiaBuilder(AvtoRiaCategory category, long marka_id, long model_id, long state) {
+    public AvtoRiaUrlBuilder(AvtoRiaCategory category, long marka_id, long model_id, long state) {
         this.category = category;
         this.marka_id = marka_id;
         this.model_id = model_id;
@@ -34,48 +29,19 @@ public class AvtoRiaBuilder implements UrlBuilder {
     private final long marka_id;
     private final long model_id;
     private final long state;
-    private long s_yers;
-    private long po_yers;
-    private long price_ot;
-    private long price_do;
     private long currency;
     private long countpage;
-    private long page;
 
-    public AvtoRiaBuilder year_from(long from) {
-        this.s_yers = from;
-        return this;
-    }
-
-    public AvtoRiaBuilder year_to(long to) {
-        this.po_yers = to;
-        return this;
-    }
-
-    public AvtoRiaBuilder priceFrom(long priceFrom) {
-        this.price_ot = priceFrom;
-        return this;
-    }
-
-    public AvtoRiaBuilder priceTo(long priceTo) {
-        this.price_do = priceTo;
-        return this;
-    }
-
-    public AvtoRiaBuilder currency(long currency) {
+    public AvtoRiaUrlBuilder currency(long currency) {
         this.currency = currency;
         return this;
     }
 
-    public AvtoRiaBuilder countpage(long countpage) {
+    public AvtoRiaUrlBuilder countpage(long countpage) {
         this.countpage = countpage;
         return this;
     }
 
-    public AvtoRiaBuilder page(long page) {
-        this.page = page;
-        return this;
-    }
 
     private final static String TEMPLATE =
             "https://auto.ria.com/search/" +
@@ -131,4 +97,5 @@ public class AvtoRiaBuilder implements UrlBuilder {
             return id;
         }
     }
+
 }

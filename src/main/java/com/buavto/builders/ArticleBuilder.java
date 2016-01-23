@@ -10,6 +10,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class ArticleBuilder {
 
@@ -55,7 +56,9 @@ public class ArticleBuilder {
     public ArticleBuilder year(String year) {
         DateFormat df = new SimpleDateFormat("YYYY");
             try {
-                this.year = df.parse(year);
+                if (year != null) {
+                    this.year = df.parse(year);
+                }
             } catch (ParseException e) {
                 LOGGER.warn("Error occurred while parsing year: [" + year + "]");
             }

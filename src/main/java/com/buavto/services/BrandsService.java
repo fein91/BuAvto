@@ -1,6 +1,7 @@
 package com.buavto.services;
 
 import com.buavto.dao.BrandsDao;
+import com.buavto.dao.ModelsDao;
 import com.buavto.model.Brand;
 import com.buavto.model.Model;
 import org.apache.log4j.LogManager;
@@ -10,17 +11,21 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class BrandsService {
-    private final static Logger LOGGER = LogManager.getLogger(AvtoRiaArticlesParserStrategy.class.getName());
+    private final static Logger LOGGER = LogManager.getLogger(BrandsService.class.getName());
 
     @Autowired
     private BrandsDao brandsDao;
+    @Autowired
+    private ModelsDao modelsDao;
 
-    public void addNewModel(Brand brand, String modelName) {
+    public Model addNewModel(Brand brand, String modelName) {
         Model model = new Model();
         model.setName(modelName);
         brand.getModels().add(model);
+        modelsDao.save(model);
         brandsDao.save(brand);
-        LOGGER.info("Brand was saved to db: " + brand);
+        LOGGER.info("New model was saved to db: " + model);
+        return model;
     }
 
     public Model findModel(Brand brand, String modelName) {

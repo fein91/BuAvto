@@ -8,4 +8,6 @@ import java.util.List;
 public interface ArticlesParsingStrategy {
 
     List<Article> parseDom(Document dom);
+
+    boolean hasNextPage(Document dom);
 }

@@ -8,7 +8,13 @@
        <context:property-placeholder location="classpath:/db.properties" />
 
        <bean id="urlBuildersFactory" class="com.buavto.builders.url.UrlBuildersFactory">
-              <lookup-method name="createAvtoRiaBuilder" bean="avtoRiaBuilder"/>
+              <lookup-method name="createAvtoRiaUrlBuilder" bean="avtoRiaUrlBuilder"/>
+              <lookup-method name="createRstUrlBuilder" bean="rstUrlBuilder"/>
+       </bean>
+
+       <bean id="articlesParsingStrategyFactory" class="com.buavto.services.ArticlesParsingStrategyFactory">
+              <lookup-method name="createAvtoRiaArticlesParsingStrategy" bean="avtoRiaArticlesParserStrategy"/>
+              <lookup-method name="createRstArticlesParsingStrategy" bean="rstArticlesParserStrategy"/>
        </bean>
 
 </beans>
