@@ -1,6 +1,8 @@
-package com.buavto;
+package com.buavto.builders;
 
-import com.buavto.builders.url.AvtoRiaBuilder;
+import com.buavto.Application;
+import com.buavto.AutoSite;
+import com.buavto.builders.url.AvtoRiaUrlBuilder;
 import com.buavto.builders.url.UrlBuildersFactory;
 import junit.framework.Assert;
 import org.junit.Test;
@@ -8,8 +10,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.net.URL;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
@@ -20,7 +20,7 @@ public class AvtoRiaUrlBuilderTest {
 
     @Test
     public void testBuilder() throws Exception {
-        AvtoRiaBuilder builder = (AvtoRiaBuilder) urlBuildersFactory.create(1);
+        AvtoRiaUrlBuilder builder = (AvtoRiaUrlBuilder) urlBuildersFactory.create(AutoSite.AUTO_RIA_COM);
 
         String expectedUrl1 = "https://auto.ria.com/search/" +
                 "?category_id=1&marka_id=0&model_id=0&state=0" +
@@ -36,11 +36,11 @@ public class AvtoRiaUrlBuilderTest {
                 "&countpage=0" +
                 "&page=0";
 
-        URL url1 = builder.year_from(2014).build();
+        String url1 = builder.year_from(2014).build();
 
-        Assert.assertEquals(expectedUrl1, url1.toString());
+        Assert.assertEquals(expectedUrl1, url1);
 
-        builder = (AvtoRiaBuilder) urlBuildersFactory.create(1);
+        builder = (AvtoRiaUrlBuilder) urlBuildersFactory.create(AutoSite.AUTO_RIA_COM);
 
         String expectedUrl2 = "https://auto.ria.com/search/" +
                 "?category_id=1&marka_id=0&model_id=0&state=0" +
@@ -56,8 +56,8 @@ public class AvtoRiaUrlBuilderTest {
                 "&countpage=0" +
                 "&page=0";
 
-        URL url2 = builder.currency(1).build();
+        String url2 = builder.currency(1).build();
 
-        Assert.assertEquals(expectedUrl2, url2.toString());
+        Assert.assertEquals(expectedUrl2, url2);
     }
 }

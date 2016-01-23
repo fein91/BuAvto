@@ -17,7 +17,7 @@ import java.io.InputStreamReader;
 @SpringApplicationConfiguration(classes = Application.class)
 public class AvtoRiaParseBrandsTest {
 
-    private final static String PATH = "C:\\Users\\fein\\IdeaProjects\\BuAvtoAggregator\\src\\test\\resources\\brands_avto_ria.txt";
+    private final static String PATH = ".\\src\\test\\resources\\brands_avto_ria.txt";
 
     @Autowired
     private BrandsDao brandsDao;

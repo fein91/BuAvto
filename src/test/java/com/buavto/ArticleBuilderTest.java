@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import java.util.Calendar;
 
-public class AvtoRiaArticleBuilderTest {
+public class ArticleBuilderTest {
 
     @Test
     public void testDateParse() throws Exception {

@@ -3,7 +3,6 @@ package com.buavto.services;
 import com.buavto.Application;
 import com.buavto.model.Article;
 import com.buavto.model.Brand;
-import org.jsoup.nodes.Document;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,16 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
-public class AvtoRiaParseTest {
+public class AvtoRiaParseHtmlFileTest {
 
-    private final static String PATH = "C:\\Users\\fein\\IdeaProjects\\BuAvtoAggregator\\src\\test\\resources\\avto_ria_test.html";
+    private final static String HTML1_PATH = ".\\src\\test\\resources\\avto_ria_1453498117047_page1.html";
+    private final static String HTML2_PATH = ".\\src\\test\\resources\\avto_ria_1453498117047_page2.html";
 
     @Autowired
     private Parser parser;
@@ -29,15 +26,16 @@ public class AvtoRiaParseTest {
 
     @Test
     public void testParse() throws Exception {
-        Document dom = parser.parseDom(readFile(PATH));
-        List<Article> articleList = parser.parseArticles(dom, articlesParsingStrategy);
+        List<Article> articleList = parser.parseArticlesFromHtmlFile(HTML1_PATH, articlesParsingStrategy);
 
-        Assert.assertNotNull(articleList);
-    }
+        Assert.assertNotNull(articleList.get(0).getBrand());
+        Assert.assertNotNull(articleList.get(0).getModel());
+        Assert.assertNotNull(articleList.get(0).getYear());
+        Assert.assertNotNull(articleList.get(0).getPrice());
+        Assert.assertNotNull(articleList.get(0).getDetailsUrl());
+        Assert.assertNotNull(articleList.get(0).getPhotoUrl());
 
-    private String readFile(String path) throws IOException {
-        byte[] encoded = Files.readAllBytes(Paths.get(path));
-        return new String(encoded);
+        Assert.assertEquals(10, articleList.size());
     }
 
     @Test
@@ -62,5 +60,12 @@ public class AvtoRiaParseTest {
         String title2 = "KiaRio".toUpperCase();
         Brand brand2 = articlesParsingStrategy.parseBrand(title2);
         Assert.assertEquals("KIA", brand2.getName());
+    }
+
+    @Test
+    public void testHasNextPage() throws Exception {
+        Assert.assertTrue(articlesParsingStrategy.hasNextPage(parser.parseDomFromFile(HTML1_PATH)));
+
+        Assert.assertFalse(articlesParsingStrategy.hasNextPage(parser.parseDomFromFile(HTML2_PATH)));
     }
 }
