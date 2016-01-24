@@ -19,7 +19,7 @@ import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
-public class RstParserHtmlFileTest {
+public class AvtoRiaParseHtmlFileTest {
 
     private final static String HTML1_PATH = ".\\src\\test\\resources\\avto_ria_1453498117047_page1.html";
     private final static String HTML2_PATH = ".\\src\\test\\resources\\avto_ria_1453498117047_page2.html";

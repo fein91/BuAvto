@@ -12,9 +12,15 @@ public class ArticlesParsingStrategyFactory {
                 return createRstArticlesParsingStrategy();
             case OLX_UA:
                 return createOlxArticlesParsingStrategy();
+            case AVTO_BAZAR:
+                return createAvtoBazarArticlesParsingStrategy();
             default:
                 throw new UnsupportedOperationException("not implemented yet");
         }
+    }
+
+    public AvtoBazarArticlesParsingStrategy createAvtoBazarArticlesParsingStrategy() {
+        return new AvtoBazarArticlesParsingStrategy();
     }
 
     public OlxArticlesParsingStrategy createOlxArticlesParsingStrategy() {

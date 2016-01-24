@@ -30,13 +30,14 @@ public class Application {
 
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(Application.class, args);
-
+//          readHtmlFromSite(ctx, AutoSite.AVTO_BAZAR);
 //        readHtmlFromSite(ctx, AutoSite.AUTO_RIA_COM);
 //        readHtmlFromSite(ctx, AutoSite.RST_UA);
 //        readHtmlFromSite(ctx, AutoSite.OLX_UA);
-//        parseArticles(ctx, AutoSite.AUTO_RIA_COM);
-//        parseArticles(ctx, AutoSite.RST_UA);
+        parseArticles(ctx, AutoSite.AUTO_RIA_COM);
+        parseArticles(ctx, AutoSite.RST_UA);
         parseArticles(ctx, AutoSite.OLX_UA);
+        parseArticles(ctx, AutoSite.AVTO_BAZAR);
     }
 
     private static void readHtmlFromSite(ApplicationContext ctx, AutoSite autoSite) {
@@ -79,5 +80,6 @@ public class Application {
     }
 
 }
+
 
 

@@ -144,7 +144,7 @@ public abstract class AbstractArticlesParsingStrategy implements ArticlesParsing
     protected long priceStringToLong(String priceStr) {
         long price = 0;
         try {
-            price = Long.parseLong(priceStr.replaceAll("\\$", "").replaceAll("'", "").replaceAll("\\s", ""));
+            price = Long.parseLong(priceStr.replaceAll("\\$", "").replaceAll("'", "").replaceAll("\\s", "").replace("у.е.","").replace(".", "").replace("\"",""));
         } catch (NumberFormatException e) {
             LOGGER.error("Error while parsing price happened " + e);
         }
