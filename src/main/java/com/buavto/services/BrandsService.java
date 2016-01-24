@@ -28,9 +28,9 @@ public class BrandsService {
         return model;
     }
 
-    public Model findModel(Brand brand, String modelName) {
+    public Model findModel(Brand brand, String rawModelName) {
         for (Model model : brand.getModels()) {
-            if (model.getName().equals(modelName)) {
+            if (rawModelName.contains(model.getName())) {
                 return model;
             }
         }

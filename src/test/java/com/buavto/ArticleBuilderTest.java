@@ -5,6 +5,7 @@ import com.buavto.model.Article;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class ArticleBuilderTest {
@@ -14,8 +15,6 @@ public class ArticleBuilderTest {
         Article article =  new ArticleBuilder()
                 .year("2014")
                 .build();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(article.getYear());
-        Assert.assertEquals(2014, cal.get(Calendar.YEAR));
+        Assert.assertEquals("2014", new SimpleDateFormat("YYYY").format(article.getYear()));
     }
 }

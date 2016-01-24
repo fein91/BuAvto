@@ -48,8 +48,8 @@ public class RstUrlBuilderTest {
 
         String url1 = builder
                 .year_from(2014)
-                .priceFrom(11000)
-                .priceTo(14000)
+                .usdPriceFrom(11000)
+                .usdPriceTo(14000)
                 .build();
 
         Assert.assertEquals(expectedUrl1, url1);

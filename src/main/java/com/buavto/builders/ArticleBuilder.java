@@ -3,6 +3,7 @@ package com.buavto.builders;
 import com.buavto.model.Article;
 import com.buavto.model.Brand;
 import com.buavto.model.Model;
+import com.buavto.model.Option;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
@@ -18,10 +19,12 @@ public class ArticleBuilder {
 
     private Brand brand;
     private Model model;
+    private Option option;
     private long price;
     private String detailsUrl;
     private String photoUrl;
     private Date year;
+    private String title;
 
     public ArticleBuilder brand(Brand brand) {
         this.brand = brand;
@@ -30,6 +33,11 @@ public class ArticleBuilder {
 
     public ArticleBuilder model(Model model) {
         this.model = model;
+        return this;
+    }
+
+    public ArticleBuilder option(Option option) {
+        this.option = option;
         return this;
     }
 
@@ -65,6 +73,11 @@ public class ArticleBuilder {
         return this;
     }
 
+    public ArticleBuilder title(String title) {
+        this.title = title;
+        return this;
+    }
+
     public Article build() {
         return new Article(this);
     }
@@ -91,5 +104,13 @@ public class ArticleBuilder {
 
     public Date getYear() {
         return year;
+    }
+
+    public Option getOption() {
+        return option;
+    }
+
+    public String getTitle() {
+        return title;
     }
 }

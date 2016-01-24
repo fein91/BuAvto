@@ -14,14 +14,17 @@ public class Article {
     private static final String SEQUENCE_NAME = "articles_seq";
     private static final String BRAND_FK = "brand_fk";
     private static final String MODEL_FK = "model_fk";
+    private static final String OPTION_FK = "option_fk";
 
     public Article(ArticleBuilder builder) {
         this.brand = builder.getBrand();
         this.model = builder.getModel();
+        this.option = builder.getOption();
         this.detailsUrl = builder.getDetailsUrl();
         this.photoUrl = builder.getPhotoUrl();
         this.price = builder.getPrice();
         this.year = builder.getYear();
+        this.title = builder.getTitle();
     }
 
     @Id
@@ -35,11 +38,15 @@ public class Article {
     @ManyToOne
     @JoinColumn(name = MODEL_FK)
     private Model model;
+    @ManyToOne(optional = true)
+    @JoinColumn(name = OPTION_FK)
+    private Option option;
 
     private long price;
     private String detailsUrl;
     private String photoUrl;
     private Date year;
+    private String title;
 
     public long getId() {
         return id;
@@ -85,6 +92,14 @@ public class Article {
         this.model = model;
     }
 
+    public Option getOption() {
+        return option;
+    }
+
+    public void setOption(Option option) {
+        this.option = option;
+    }
+
     public Date getYear() {
         return year;
     }
@@ -93,16 +108,26 @@ public class Article {
         this.year = year;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     @Override
     public String toString() {
         return "Article{" +
                 "id=" + id +
                 ", brand=" + brand +
                 ", model=" + model +
+                ", option=" + option +
                 ", price=" + price +
                 ", detailsUrl='" + detailsUrl + '\'' +
                 ", photoUrl='" + photoUrl + '\'' +
                 ", year=" + year +
+                ", title=" + title +
                 '}';
     }
 }

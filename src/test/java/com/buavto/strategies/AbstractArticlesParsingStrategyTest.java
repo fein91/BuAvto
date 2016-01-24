@@ -1,8 +1,9 @@
-package com.buavto.services;
+package com.buavto.strategies;
 
 import com.buavto.Application;
 import com.buavto.model.Article;
 import com.buavto.model.Brand;
+import com.buavto.services.Parser;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,32 +11,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.List;
+import java.text.SimpleDateFormat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
-public class AvtoRiaParseHtmlFileTest {
-
-    private final static String HTML1_PATH = ".\\src\\test\\resources\\avto_ria_1453498117047_page1.html";
-    private final static String HTML2_PATH = ".\\src\\test\\resources\\avto_ria_1453498117047_page2.html";
-
-    @Autowired
-    private Parser parser;
+public class AbstractArticlesParsingStrategyTest {
     @Autowired
     private AvtoRiaArticlesParserStrategy articlesParsingStrategy;
+    @Autowired
+    private Parser parser;
 
     @Test
-    public void testParse() throws Exception {
-        List<Article> articleList = parser.parseArticlesFromHtmlFile(HTML1_PATH, articlesParsingStrategy);
+    public void testParseTitle() throws Exception {
+        String title = "KIA Rio Top 2014";
+        Article article = articlesParsingStrategy.createArticleBuilderFromTitle(title).build();
 
-        Assert.assertNotNull(articleList.get(0).getBrand());
-        Assert.assertNotNull(articleList.get(0).getModel());
-        Assert.assertNotNull(articleList.get(0).getYear());
-        Assert.assertNotNull(articleList.get(0).getPrice());
-        Assert.assertNotNull(articleList.get(0).getDetailsUrl());
-        Assert.assertNotNull(articleList.get(0).getPhotoUrl());
-
-        Assert.assertEquals(10, articleList.size());
+        Assert.assertEquals("KIA", article.getBrand().getName());
+        Assert.assertEquals("RIO", article.getModel().getName());
+        Assert.assertEquals("TOP", article.getOption().getName());
+        Assert.assertEquals("2014", new SimpleDateFormat("YYYY").format(article.getYear()));
     }
 
     @Test
@@ -60,12 +54,5 @@ public class AvtoRiaParseHtmlFileTest {
         String title2 = "KiaRio".toUpperCase();
         Brand brand2 = articlesParsingStrategy.parseBrand(title2);
         Assert.assertEquals("KIA", brand2.getName());
-    }
-
-    @Test
-    public void testHasNextPage() throws Exception {
-        Assert.assertTrue(articlesParsingStrategy.hasNextPage(parser.parseDomFromFile(HTML1_PATH)));
-
-        Assert.assertFalse(articlesParsingStrategy.hasNextPage(parser.parseDomFromFile(HTML2_PATH)));
     }
 }

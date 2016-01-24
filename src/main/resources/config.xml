@@ -10,11 +10,13 @@
        <bean id="urlBuildersFactory" class="com.buavto.builders.url.UrlBuildersFactory">
               <lookup-method name="createAvtoRiaUrlBuilder" bean="avtoRiaUrlBuilder"/>
               <lookup-method name="createRstUrlBuilder" bean="rstUrlBuilder"/>
+              <lookup-method name="createOlxUrlBuilder" bean="olxUrlBuilder"/>
        </bean>
 
-       <bean id="articlesParsingStrategyFactory" class="com.buavto.services.ArticlesParsingStrategyFactory">
+       <bean id="articlesParsingStrategyFactory" class="com.buavto.strategies.ArticlesParsingStrategyFactory">
               <lookup-method name="createAvtoRiaArticlesParsingStrategy" bean="avtoRiaArticlesParserStrategy"/>
               <lookup-method name="createRstArticlesParsingStrategy" bean="rstArticlesParserStrategy"/>
+              <lookup-method name="createOlxArticlesParsingStrategy" bean="olxArticlesParsingStrategy"/>
        </bean>
 
 </beans>

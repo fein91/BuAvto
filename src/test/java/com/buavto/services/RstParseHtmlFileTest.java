@@ -2,6 +2,7 @@ package com.buavto.services;
 
 import com.buavto.Application;
 import com.buavto.model.Article;
+import com.buavto.strategies.RstArticlesParserStrategy;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

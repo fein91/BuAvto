@@ -10,9 +10,15 @@ public class UrlBuildersFactory {
                 return createAvtoRiaUrlBuilder();
             case RST_UA:
                 return createRstUrlBuilder();
+            case OLX_UA:
+                return createOlxUrlBuilder();
             default:
                 throw new UnsupportedOperationException("not implemented yet");
         }
+    }
+
+    public OlxUrlBuilder createOlxUrlBuilder() {
+        return new OlxUrlBuilder();
     }
 
     public AvtoRiaUrlBuilder createAvtoRiaUrlBuilder() {
