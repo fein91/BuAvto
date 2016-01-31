@@ -35,6 +35,7 @@ public class RstUrlBuilderTest {
                 "&drive=0" +
                 "&condition=0" +
                 "&from=sform" +
+                "&results=4" +
                 "&start=0" +
                 "&body[]=1" +
                 "&body[]=2" +
@@ -70,6 +71,7 @@ public class RstUrlBuilderTest {
                 "&drive=0" +
                 "&condition=0" +
                 "&from=sform" +
+                "&results=4" +
                 "&start=1" +
                 "&body[]=1" +
                 "&body[]=2" +

@@ -16,6 +16,9 @@ public class Article {
     private static final String MODEL_FK = "model_fk";
     private static final String OPTION_FK = "option_fk";
 
+    public Article() {
+    }
+
     public Article(ArticleBuilder builder) {
         this.brand = builder.getBrand();
         this.model = builder.getModel();

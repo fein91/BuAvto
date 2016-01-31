@@ -15,6 +15,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,12 +33,12 @@ public class Application {
         ApplicationContext ctx = SpringApplication.run(Application.class, args);
 //          readHtmlFromSite(ctx, AutoSite.AVTO_BAZAR);
 //        readHtmlFromSite(ctx, AutoSite.AUTO_RIA_COM);
-//        readHtmlFromSite(ctx, AutoSite.RST_UA);
+        //readHtmlFromSite(ctx, AutoSite.RST_UA);
 //        readHtmlFromSite(ctx, AutoSite.OLX_UA);
-        parseArticles(ctx, AutoSite.AUTO_RIA_COM);
-        parseArticles(ctx, AutoSite.RST_UA);
-        parseArticles(ctx, AutoSite.OLX_UA);
-        parseArticles(ctx, AutoSite.AVTO_BAZAR);
+        //parseArticles(ctx, AutoSite.AUTO_RIA_COM);
+      //  parseArticles(ctx, AutoSite.RST_UA);
+        //parseArticles(ctx, AutoSite.OLX_UA);
+       //parseArticles(ctx, AutoSite.AVTO_BAZAR);
     }
 
     private static void readHtmlFromSite(ApplicationContext ctx, AutoSite autoSite) {
@@ -46,7 +47,7 @@ public class Application {
         ArticlesParsingStrategyFactory articlesParsingStrategyFactory = (ArticlesParsingStrategyFactory) ctx.getBean("articlesParsingStrategyFactory");
 
         AbstractUrlBuilder rstUrlBuilder = urlBuildersFactory.create(autoSite)
-                .year_from(2014)
+                .year_from(2013)
                 .usdPriceFrom(12000)
                 .usdPriceTo(14000);
 

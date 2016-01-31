@@ -18,7 +18,7 @@ public class CurrencyService {
     private final static String CURRENCY_POINT = "http://resources.finance.ua/ru/public/currency-cash.xml";
     private final static Logger LOGGER = LogManager.getLogger(Parser.class.getName());
 
-    @PostConstruct
+    //@PostConstruct
     public void init() {
         try {
             Document doc = Jsoup.connect(CURRENCY_POINT).get();

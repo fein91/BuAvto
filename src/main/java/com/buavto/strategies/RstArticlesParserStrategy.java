@@ -1,5 +1,6 @@
 package com.buavto.strategies;
 
+import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Component;
@@ -11,6 +12,10 @@ import java.util.List;
 public class RstArticlesParserStrategy extends AbstractArticlesParsingStrategy {
 
     private static final List<String> LITERALS_TO_REMOVE = Arrays.asList("НОВЫЙ", "ПРОДАМ", "— УЖЕ ПРОДАНО — АРХИВ RST", "— АРХИВ RST");
+    private String FIRST_PAGE_BLOCK_TEXT = "\"1\"";
+
+    //TODO remove this ugly hack
+    private int nextPageClicksCounter = 0;
 
     protected String preProcessArticleTitle(String articleTitle) {
         String result = articleTitle.toUpperCase();
@@ -19,6 +24,7 @@ public class RstArticlesParserStrategy extends AbstractArticlesParsingStrategy {
         }
         return result;
     }
+
 
     @Override
     protected long parseUsdPrice(Element articleDiv) {
@@ -55,8 +61,25 @@ public class RstArticlesParserStrategy extends AbstractArticlesParsingStrategy {
     }
 
     @Override
+    public boolean hasNextPage(Document doc) {
+        Element pagerBlock = doc.body().select(".results-pager").first();
+        Element nextPageControl = pagerBlock.select("#next-page").first();
+        if (nextPageControl == null) {
+            LOGGER.warn("Next page control wasn't found on page: [" + doc.title() + "]");
+            return false;
+        }
+
+        boolean isFirstPageSelected = pagerBlock.getElementsByTag("span").first().text().replaceAll("\'", "").equals("1");
+        if (isFirstPageSelected && nextPageClicksCounter > 1) {
+            return false;
+        }
+        nextPageClicksCounter++;
+        return true;
+    }
+
+    @Override
     protected String getNextPageControlSelector() {
-        return "#next-page";
+        return null;
     }
 
     @Override

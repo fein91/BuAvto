@@ -118,8 +118,7 @@ public abstract class AbstractArticlesParsingStrategy implements ArticlesParsing
             }
         }
 
-        LOGGER.warn("Unknown brand in title: " + title);
-        return null;
+        throw new IllegalStateException("Unknown brand in title: " + title);
     }
 
     protected Model parseModel(Brand brand, String rawModelName) {
@@ -128,7 +127,7 @@ public abstract class AbstractArticlesParsingStrategy implements ArticlesParsing
         if (model == null) {
             model = brandsService.addNewModel(brand, rawModelName);
         }
-
+        LOGGER.info("model parsed: [" + model + "] for brand: " + brand.getName() + " and raw model name: " + rawModelName);
         return model;
     }
 

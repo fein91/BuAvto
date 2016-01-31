@@ -61,6 +61,7 @@ public class Model {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", url='" + url + '\'' +
+                ", options=" + options +
                 '}';
     }
 }

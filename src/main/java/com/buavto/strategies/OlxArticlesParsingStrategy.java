@@ -39,7 +39,7 @@ public class OlxArticlesParsingStrategy extends AbstractArticlesParsingStrategy 
 
     @Override
     protected String getNextPageControlSelector() {
-        return ".fbold.next.abs.large";
+        return ".pageNextPrev";
     }
 
     @Override

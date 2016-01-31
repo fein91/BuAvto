@@ -48,7 +48,7 @@ public class AvtoBazarArticlesParsingStrategy extends AbstractArticlesParsingStr
             return false;
         }
         Element nextPageContainer = pagingContainer.getElementById("next");
-        Element selectedPageContainer = pagingContainer.getElementsByClass("sec").first();
+        Element selectedPageContainer = pagingContainer.getElementsByClass("sel").first();
         return !nextPageContainer.attr("href").equals(selectedPageContainer.attr("href"));
     }
 
