@@ -1,6 +1,7 @@
 package com.buavto.services;
 
 import com.buavto.builders.url.AbstractUrlBuilder;
+import com.buavto.strategies.AbstractArticlesParsingStrategy;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

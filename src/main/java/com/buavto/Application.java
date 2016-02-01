@@ -5,6 +5,8 @@ import com.buavto.dao.ArticlesDao;
 import com.buavto.model.Article;
 import com.buavto.services.*;
 import com.buavto.builders.url.UrlBuildersFactory;
+import com.buavto.strategies.AbstractArticlesParsingStrategy;
+import com.buavto.strategies.ArticlesParsingStrategyFactory;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;
@@ -13,6 +15,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,11 +31,14 @@ public class Application {
 
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(Application.class, args);
-
-        readHtmlFromSite(ctx, AutoSite.AUTO_RIA_COM);
-        readHtmlFromSite(ctx, AutoSite.RST_UA);
-        parseArticles(ctx, AutoSite.AUTO_RIA_COM);
-        parseArticles(ctx, AutoSite.RST_UA);
+//          readHtmlFromSite(ctx, AutoSite.AVTO_BAZAR);
+//        readHtmlFromSite(ctx, AutoSite.AUTO_RIA_COM);
+        //readHtmlFromSite(ctx, AutoSite.RST_UA);
+//        readHtmlFromSite(ctx, AutoSite.OLX_UA);
+        //parseArticles(ctx, AutoSite.AUTO_RIA_COM);
+      //  parseArticles(ctx, AutoSite.RST_UA);
+        //parseArticles(ctx, AutoSite.OLX_UA);
+       //parseArticles(ctx, AutoSite.AVTO_BAZAR);
     }
 
     private static void readHtmlFromSite(ApplicationContext ctx, AutoSite autoSite) {
@@ -41,9 +47,9 @@ public class Application {
         ArticlesParsingStrategyFactory articlesParsingStrategyFactory = (ArticlesParsingStrategyFactory) ctx.getBean("articlesParsingStrategyFactory");
 
         AbstractUrlBuilder rstUrlBuilder = urlBuildersFactory.create(autoSite)
-                .year_from(2014)
-                .priceFrom(12000)
-                .priceTo(14500);
+                .year_from(2013)
+                .usdPriceFrom(12000)
+                .usdPriceTo(14000);
 
         AbstractArticlesParsingStrategy articlesParsingStrategy = articlesParsingStrategyFactory.create(autoSite);
         htmlUrlReader.read(articlesParsingStrategy, rstUrlBuilder);
@@ -75,4 +81,6 @@ public class Application {
     }
 
 }
+
+
 

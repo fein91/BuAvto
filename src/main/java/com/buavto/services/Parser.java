@@ -1,6 +1,7 @@
 package com.buavto.services;
 
 import com.buavto.model.Article;
+import com.buavto.strategies.ArticlesParsingStrategy;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
@@ -61,7 +62,7 @@ public class Parser {
         return doc;
     }
 
-    protected Document parseDomFromFile(String htmlPath) {
+    public Document parseDomFromFile(String htmlPath) {
         Document doc = null;
         try {
             doc = Jsoup.parse(new File(htmlPath), null);

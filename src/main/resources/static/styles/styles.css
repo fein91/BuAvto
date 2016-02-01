@@ -1,0 +1,153 @@
+*{
+    padding:0;
+    margin:0;
+}
+
+body {
+    height: 100%;
+}
+
+html {
+    height: 100%;
+}
+
+#wrapper {
+    min-height:100%;
+    position:relative;
+}
+
+.indented {
+    text-indent: 20px;
+}
+
+.leftNavBar {
+    float:left;
+    width: 20%;
+    height: 100%;
+    display: inline;
+    margin: 0;
+    padding: 0;
+    margin-right: 10px;
+    position: fixed;
+}
+
+.content {
+    float: left;
+    margin-left: 0%;
+    padding: 0;
+    display: inline;
+}
+
+.article {
+    border-bottom: 1px solid;
+}
+
+.icon-plus {
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    vertical-align: middle;
+    content: url("../images/add.ico");
+}
+
+.icon-minus {
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    vertical-align: middle;
+    content:url("../images/minus.ico");
+}
+
+.icon-file {
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    vertical-align: middle;
+    content:url("../images/folder.ico");
+}
+
+.text-input {
+    width: 380px;
+    height: 25px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.button {
+    margin-top: 10px;
+    width: 180px;
+    height: 35px;
+}
+
+.submit {
+
+}
+
+.cancel {
+    margin-left: 20px;
+}
+
+.article-cell {
+    width: 100px;
+}
+
+.validation-msg {
+    color:red;
+}
+
+.ng-modal-overlay {
+    /* A dark translucent div that covers the whole screen */
+    position:absolute;
+    z-index:9999;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:#000000;
+    opacity: 0.8;
+}
+
+.ng-modal-dialog {
+    /* A centered div above the overlay with a box shadow. */
+    z-index:10000;
+    position: absolute;
+    width: 405px;
+    height: 170px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+
+    background-color: #fff;
+    box-shadow: 4px 4px 80px #000;
+}
+
+.ng-modal-dialog-content {
+    padding: 10px;
+    text-align: left;
+}
+
+.ng-modal-close {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 120%;
+    display: inline-block;
+    font-weight: bold;
+    font-family: 'arial', 'sans-serif';
+}
+
+.modal-name {
+    border-bottom: 1px solid #dddddd;
+    margin-bottom: 20px;
+}
+
+.modal-group {
+    margin-bottom: 20px;
+    height: 20px;
+}

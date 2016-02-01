@@ -1,6 +1,62 @@
-http://olx.ua/uk/transport/legkovye-avtomobili/kiev/?search[filter_float_price:from]=500000&search[filter_float_motor_year:from]=2013
+﻿http://olx.ua/uk/transport/legkovye-avtomobili/kiev/?search[filter_float_price:from]=500000&search[filter_float_price:to]=1000000&search[filter_float_motor_year:from]=2013
+
+articlesContainer: #offers_table
+article: .offer
+detailsUrl: .thumb vtop inlblk rel tdnone linkWithHash scale4 detailsLink 
+title/photoUrl: .fleft
+price: .price
+
+
+id=#
+class=.
+
 http://avtobazar.infocar.ua/search-car/?new[]=0&m[]=0&n[]=0&x[]=0&y1=2013&y2=&p1=&p2=13000&o[]=11100&c[]=11101&ru=&m1=&m2=&k[]=&co[]=&d=&p=&pr=&da=0
+
+articlesContainer: #results
+article: .car
+detailsUrl: .h
+title: .h
+photoUrl: .flip
+price: .h
+
+
+
+
 http://sale.autoportal.ua/filters.html?act=abf&vehicle_id=1&brand_id[]=0&seria_id[]=&city_id[]=kiev&price1=&price2=13000&year1=2013&year2=0&probeg1=&probeg2=&liters1=&liters2=&carbody[]=&transmission=0&fueltype=0&privod=&color=&dtp=-1&no_custom=-1
+
+articlesContainer: #ads_list 
+article: .ads_cell
+detailsUrl: .vrtcl_itm
+title: .p-notepad
+photoUrl: .vrtcl_itm
+price: .red
+
+
 http://www.autosite.ua/used_results.html?sel_make_id=0&sel_model_id=0&u_id=&cmd=ajax&sort=date&dir=desc&page=1&t_id=1&m_id[]=0&mod_id[]=0&y_f=2013&y_t=0&p_f=&p_t=13000&m_f=&m_t=&r_id[10]=10&e_size=0&power_f=&power_t=&ad_id=
+
+articlesContainer: #dataset
+article: .ad
+detailsUrl: .data
+title: .data
+photoUrl: .img border-bl
+price: .lred f14 b
+
+
 http://kiev.avtomax.ua/car/priceto/13000/yearfrom/2013/yearto/2016?priceCurrency=USD&state=all&sort=d&sortd=d&ll=Киев
+
+articlesContainer: #ads-search-container
+article: .proposition clearfix
+detailsUrl: .link-name outclick
+title:  .link-line
+photoUrl: .column-1
+price: .price
+
+
 http://avtobazar.ua/poisk/avto/?price_to=13000&region1=1912&country1=1911&year_from=2013&show_only=all&per-page=10
+
+articlesContainer: #search-result-container
+article: .row advert-item orange
+detailsUrl: .row advert-item orange
+title: .col-xs-12 col-sm-5 col-sm-push-4 title-teh-data
+photoUrl: .photo-wrap
+price: .price

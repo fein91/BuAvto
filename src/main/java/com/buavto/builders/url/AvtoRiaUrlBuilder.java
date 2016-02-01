@@ -1,7 +1,5 @@
 package com.buavto.builders.url;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 

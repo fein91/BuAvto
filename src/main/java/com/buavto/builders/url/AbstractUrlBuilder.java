@@ -25,13 +25,13 @@ public abstract class AbstractUrlBuilder implements UrlBuilder {
     }
 
     @Override
-    public AbstractUrlBuilder priceFrom(long priceFrom) {
+    public AbstractUrlBuilder usdPriceFrom(long priceFrom) {
         this.price_ot = priceFrom;
         return this;
     }
 
     @Override
-    public AbstractUrlBuilder priceTo(long priceTo) {
+    public AbstractUrlBuilder usdPriceTo(long priceTo) {
         this.price_do = priceTo;
         return this;
     }

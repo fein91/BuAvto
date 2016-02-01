@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="buavto">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="../js/app/app.js"></script>
+    <script src="../js/app/home.controller.js"></script>
+    <script src="../js/app/services/brands.service.js"></script>
+    <script src="../js/app/services/articles.service.js"></script>
+    <script src="../js/app/components/ng-table.js"></script>
+    <script src="../js/app/articlesSearch.controller.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="../styles/ng-table.css">
+</head>
+<body>
+    <div id="wrapper">
+        <div ng-controller="HomeController as home">
+            <div class="content">
+                <table ng-table="home.tableParams" class="table table-condensed table-bordered table-striped" show-filter="true">
+                    <tr ng-repeat="article in $data">
+                        <td class="article-cell" data-title="'Brand'" filter="{ 'brand.name': 'text'}" sortable="'brand.name'">
+                            {{article.brand.name}}</td>
+                        <td class="article-cell" data-title="'Model'" filter="{ 'model.name': 'text'}" sortable="'model.name'">
+                            {{article.model.name}}</td>
+                        <td class="article-cell" data-title="'Option'" filter="{ 'option.name': 'text'}" sortable="'option.name'">
+                            {{article.option.name}}</td>
+                        <td class="article-cell" data-title="'Year'" sortable="'year'">
+                            {{article.year | date}}</td>
+                        <td class="article-cell" data-title="'Price'" filter="{ 'price': 'number'}" sortable="'price'">
+                            {{article.price | currency}}</td>
+                        <td data-title="'Photo'">
+                            <a ng-href="{{article.detailsUrl}}"><img ng-src="{{article.photoUrl}}"/></a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

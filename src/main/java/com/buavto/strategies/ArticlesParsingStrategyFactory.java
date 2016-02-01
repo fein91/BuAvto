@@ -1,4 +1,4 @@
-package com.buavto.services;
+package com.buavto.strategies;
 
 
 import com.buavto.AutoSite;
@@ -10,9 +10,21 @@ public class ArticlesParsingStrategyFactory {
                 return createAvtoRiaArticlesParsingStrategy();
             case RST_UA:
                 return createRstArticlesParsingStrategy();
+            case OLX_UA:
+                return createOlxArticlesParsingStrategy();
+            case AVTO_BAZAR:
+                return createAvtoBazarArticlesParsingStrategy();
             default:
                 throw new UnsupportedOperationException("not implemented yet");
         }
+    }
+
+    public AvtoBazarArticlesParsingStrategy createAvtoBazarArticlesParsingStrategy() {
+        return new AvtoBazarArticlesParsingStrategy();
+    }
+
+    public OlxArticlesParsingStrategy createOlxArticlesParsingStrategy() {
+        return new OlxArticlesParsingStrategy();
     }
 
     public AvtoRiaArticlesParserStrategy createAvtoRiaArticlesParsingStrategy() {

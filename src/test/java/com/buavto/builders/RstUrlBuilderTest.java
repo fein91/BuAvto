@@ -35,6 +35,7 @@ public class RstUrlBuilderTest {
                 "&drive=0" +
                 "&condition=0" +
                 "&from=sform" +
+                "&results=4" +
                 "&start=0" +
                 "&body[]=1" +
                 "&body[]=2" +
@@ -48,8 +49,8 @@ public class RstUrlBuilderTest {
 
         String url1 = builder
                 .year_from(2014)
-                .priceFrom(11000)
-                .priceTo(14000)
+                .usdPriceFrom(11000)
+                .usdPriceTo(14000)
                 .build();
 
         Assert.assertEquals(expectedUrl1, url1);
@@ -70,6 +71,7 @@ public class RstUrlBuilderTest {
                 "&drive=0" +
                 "&condition=0" +
                 "&from=sform" +
+                "&results=4" +
                 "&start=1" +
                 "&body[]=1" +
                 "&body[]=2" +

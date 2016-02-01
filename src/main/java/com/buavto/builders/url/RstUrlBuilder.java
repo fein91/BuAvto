@@ -16,6 +16,7 @@ public class RstUrlBuilder extends AbstractUrlBuilder {
     public RstUrlBuilder() {
         //Cars body ids
         bodySet.addAll(Arrays.asList(1, 2, 3, 4, 5, 6, 10, 11, 27));
+        page = 1;
     }
 
 
@@ -39,6 +40,7 @@ public class RstUrlBuilder extends AbstractUrlBuilder {
             "&condition=0" +
             "&from=sform" +
             "&start=0" +
+            "&results=4" +
             "&body[]=1" +
             "&body[]=2" +
             "&body[]=3" +
@@ -65,6 +67,7 @@ public class RstUrlBuilder extends AbstractUrlBuilder {
                 .append("&drive=").append(0)
                 .append("&condition=").append(0)
                 .append("&from=").append("sform")
+                .append("&results=").append(4)
                 .append("&start=").append(page);
 
         for (int bodyId : bodySet) {

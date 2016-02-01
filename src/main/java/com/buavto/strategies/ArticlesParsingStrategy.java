@@ -1,4 +1,4 @@
-package com.buavto.services;
+package com.buavto.strategies;
 
 import com.buavto.model.Article;
 import org.jsoup.nodes.Document;
