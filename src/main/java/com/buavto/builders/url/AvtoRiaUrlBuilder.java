@@ -10,22 +10,18 @@ public class AvtoRiaUrlBuilder extends AbstractUrlBuilder {
 
     public AvtoRiaUrlBuilder() {
         this.category = AvtoRiaCategory.CARS;
-        this.marka_id = 0;
-        this.model_id = 0;
         this.state = 0;
         this.currency = 1;
     }
 
-    public AvtoRiaUrlBuilder(AvtoRiaCategory category, long marka_id, long model_id, long state) {
+    public AvtoRiaUrlBuilder(AvtoRiaCategory category, long mark, long model, long state) {
         this.category = category;
-        this.marka_id = marka_id;
-        this.model_id = model_id;
+        this.mark = mark;
+        this.model = model;
         this.state = state;
     }
 
     private final AvtoRiaCategory category;
-    private final long marka_id;
-    private final long model_id;
     private final long state;
     private long currency;
     private long countpage;
@@ -60,13 +56,13 @@ public class AvtoRiaUrlBuilder extends AbstractUrlBuilder {
     public String build() {
         StringBuilder strBuilder = new StringBuilder(URL_PREFIX);
         strBuilder.append("?category_id=").append(category.getId())
-                .append("&marka_id=").append(marka_id)
-                .append("&model_id=").append(model_id)
+                .append("&marka_id=").append(mark)
+                .append("&model_id=").append(model)
                 .append("&state=").append(state)
                 .append("#")
                 .append("category_id=").append(category.getId())
-                .append("&marka_id[0]=").append(marka_id)
-                .append("&model_id[0]=").append(model_id)
+                .append("&marka_id[0]=").append(mark)
+                .append("&model_id[0]=").append(model)
                 .append("&state[0]=").append(state)
                 .append("&s_yers[0]=").append(s_yers)
                 .append("&po_yers[0]=").append(po_yers)

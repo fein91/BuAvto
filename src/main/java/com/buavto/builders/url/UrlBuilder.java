@@ -1,6 +1,9 @@
 package com.buavto.builders.url;
 
 public interface UrlBuilder {
+
+    UrlBuilder mark(long mark);
+    UrlBuilder model(long model);
     UrlBuilder usdPriceFrom(long priceFrom);
     UrlBuilder usdPriceTo(long priceTo);
     UrlBuilder year_from(long from);

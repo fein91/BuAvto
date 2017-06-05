@@ -18,11 +18,6 @@ public class Parser {
     private final static Logger LOGGER = LogManager.getLogger(Parser.class.getName());
 
 
-    public List<Article> parseArticlesFromUrl(String url, ArticlesParsingStrategy parsingStrategy) throws IOException {
-        Document doc = parseDomFromUrl(url);
-        return parseArticles(doc, parsingStrategy);
-    }
-
     public List<Article> parseArticlesFromHtmlFile(File htmlFile, ArticlesParsingStrategy parsingStrategy) throws IOException {
         Document doc = parseDomFromFile(htmlFile);
         return parseArticles(doc, parsingStrategy);
@@ -35,20 +30,6 @@ public class Parser {
 
     public List<Article> parseArticles(Document doc, ArticlesParsingStrategy parsingStrategy) throws IOException {
         return parsingStrategy.parseDom(doc);
-    }
-
-    protected Document parseDomFromUrl(String url) throws IOException {
-        Document doc = Jsoup.connect(url)
-                .userAgent(DEFAULT_USER_AGENT)
-                .get();
-        LOGGER.info("html doc was got from url: [" + url + "]");
-        return doc;
-    }
-
-    protected Document parseDomFromHtml(String html) {
-        Document doc = Jsoup.parse(html);
-        LOGGER.info("html doc was parsed from html string");
-        return doc;
     }
 
     protected Document parseDomFromFile(File htmlFile) {

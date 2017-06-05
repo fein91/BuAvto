@@ -6,11 +6,26 @@ import org.apache.log4j.Logger;
 public abstract class AbstractUrlBuilder implements UrlBuilder {
     protected final static Logger LOGGER = LogManager.getLogger(AbstractUrlBuilder.class.getName());
 
+    protected long model;
+    protected long mark;
     protected long s_yers;
     protected long po_yers;
     protected long price_ot;
     protected long price_do;
     protected long page;
+
+
+    @Override
+    public AbstractUrlBuilder mark(long mark) {
+        this.mark = mark;
+        return this;
+    }
+
+    @Override
+    public AbstractUrlBuilder model(long model) {
+        this.model = model;
+        return this;
+    }
 
     @Override
     public AbstractUrlBuilder year_from(long from) {

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.List;
 
 @Component
 public class HtmlUrlReader {
@@ -32,14 +33,22 @@ public class HtmlUrlReader {
         while (hasNextPage) {
             String destPath = htmlsPath + articlesParsingStrategy.getSiteName() + readProcessId +"_page" + filledUrlBuilder.getPage() + ".html";
 
-            readNextPage(url, destPath, articlesParsingStrategy.getLoadTimeout());
+            readPage(url, destPath, articlesParsingStrategy.getLoadTimeout());
             hasNextPage = articlesParsingStrategy.hasNextPage(parser.parseDomFromFile(destPath));
 
             url = filledUrlBuilder.nextPage().build();
         }
     }
 
-    protected void readNextPage(String url, String destPath, long timeout) {
+    public void readDetailPages(List<String> urls) {
+        urls.parallelStream().forEach(url -> {
+            String destPath = htmlsPath + url + ".html";
+
+            readPage(url, destPath, 1000);
+        });
+    }
+
+    public void readPage(String url, String destPath, long timeout) {
         String cmd = phatomjsPath + " " + htmljsPath + " " + url + " " + destPath + " " + timeout;
         Process p;
         try {

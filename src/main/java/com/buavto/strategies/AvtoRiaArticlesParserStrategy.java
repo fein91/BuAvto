@@ -10,7 +10,7 @@ public class AvtoRiaArticlesParserStrategy extends AbstractArticlesParsingStrate
     @Override
     protected long parseUsdPrice(Element articleDiv) {
         Element priceDiv = articleDiv.select("div.price-ticket").first();
-        Element usdPrice = priceDiv.select("strong.green").first();
+        Element usdPrice = priceDiv.select(".bold,green").first();
         return priceStringToLong(usdPrice.text());
     }
 
@@ -34,7 +34,7 @@ public class AvtoRiaArticlesParserStrategy extends AbstractArticlesParsingStrate
         Element photoContainer = articleDiv.select("div.ticket-photo").first();
         Element href = photoContainer.getElementsByTag("a").first();
 
-        String detailsUrl = "https://auto.ria.com" + href.attr("href");
+        String detailsUrl = href.attr("href");
         return detailsUrl;
     }
 
